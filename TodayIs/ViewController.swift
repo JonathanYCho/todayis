@@ -19,7 +19,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var myLocation = locationManager?.requestLocation()
+//        var myLocation = locationManager?.requestLocation()
         let centerLocation = CLLocationCoordinate2DMake(-27, 153)
         let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
