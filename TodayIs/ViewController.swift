@@ -46,20 +46,27 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayDate()
-        let myLocation = locationManager?.requestLocation()
-        let centerLocation = CLLocationCoordinate2DMake(-27, 153)
+//        var myLocation = locationManager?.requestLocation()
+        
+        
+        let centerLocation = CLLocationCoordinate2DMake(-27 , 153)
         let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
         self.map.setRegion(mapRegion, animated: true)
-        map.userTrackingMode = .follow
+        self.map.userTrackingMode = .follow
         // Do any additional setup after loading the view, typically from a nib.
+        let newYorkLocation = CLLocationCoordinate2DMake(37.331648, -122.032624)
+        // Drop a pin
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = newYorkLocation
+        dropPin.title = "Bagels"
+        map.addAnnotation(dropPin)
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.distanceFilter = kCLDistanceFilterNone
         locationManager?.requestWhenInUseAuthorization()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
