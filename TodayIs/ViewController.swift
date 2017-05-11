@@ -45,12 +45,17 @@ class ViewController: UIViewController {
         self.map.setRegion(mapRegion, animated: true)
         self.map.userTrackingMode = .follow
         // Do any additional setup after loading the view, typically from a nib.
-        let newYorkLocation = CLLocationCoordinate2DMake(37.331648, -122.032624)
-        // Drop a pin
+        
+        
+        //TODO REAL LOCATION
+        let mainLoc = CLLocationCoordinate2DMake(37.331648, -122.032624)
         let dropPin = MKPointAnnotation()
-        dropPin.coordinate = newYorkLocation
+        dropPin.coordinate = mainLoc
+        
+        //TODO: TITLE
         dropPin.title = "Bagels"
         map.addAnnotation(dropPin)
+        
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
