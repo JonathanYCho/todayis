@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+
 
 class ViewController: UIViewController {
 
@@ -20,6 +22,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    
 
 }
 //I hope I don't accidentally merge the branches anytime soon.
