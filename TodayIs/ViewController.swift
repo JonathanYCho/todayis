@@ -25,9 +25,10 @@ class ViewController: UIViewController {
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
         self.map.setRegion(mapRegion, animated: true)
         self.map.userTrackingMode = .follow
-        
+            
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
