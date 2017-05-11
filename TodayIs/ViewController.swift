@@ -10,16 +10,26 @@ import UIKit
 import CoreLocation
 import MapKit
 
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d"
+        print(dateFormatter.string(from: self))
+        return dateFormatter.string(from: self)
+    }
+}
+
+
 class ViewController: UIViewController {
     var locationManager: CLLocationManager?
     var startLocation: CLLocation?
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var celebrationLabel: UILabel!
     @IBOutlet weak var map: MKMapView!
-
+    
     var today = Date()
     func displayDate(){
-        dateLabel.text = String(describing: today)
+        dateLabel.text = String(describing: today.toString())
     }
     @IBAction func dateNext(_ sender: UIButton) {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
