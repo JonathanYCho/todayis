@@ -17,9 +17,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var celebrationLabel: UILabel!
     @IBOutlet weak var map: MKMapView!
 
+    var today = Date()
+    func displayDate(){
+        dateLabel.text = String(describing: today)
+    }
+    @IBAction func dateNext(_ sender: UIButton) {
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
+        today = tomorrow!
+        displayDate()
+    }
+    
+    @IBAction func datePrev(_ sender: UIButton) {
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
+        today = yesterday!
+        displayDate()
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        var myLocation = locationManager?.requestLocation()
+        displayDate()
+        let myLocation = locationManager?.requestLocation()
         let centerLocation = CLLocationCoordinate2DMake(-27, 153)
         let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
