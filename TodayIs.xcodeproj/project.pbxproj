@@ -301,6 +301,7 @@
 				71FF527F1EC4DB09008971FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
