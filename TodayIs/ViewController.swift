@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import MapKit
+import CoreLocation
+
 
 class ViewController: UIViewController {
-
+    var locationManager: CLLocationManager?
+    var startLocation: CLLocation?
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var celebrationLabel: UILabel!
-    
     @IBOutlet weak var map: MKMapView!
 
     
@@ -27,6 +28,11 @@ class ViewController: UIViewController {
         self.map.userTrackingMode = .follow
             
         // Do any additional setup after loading the view, typically from a nib.
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        
+        locationManager?.requestWhenInUseAuthorization()
     }
     
 
@@ -35,8 +41,28 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
 //I hope I don't accidentally merge the branches anytime soon.
 //Red two standing by.
 //Stay on target!
+
+extension ViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if startLocation == nil {
+            startLocation = locations.first
+        } else {
+            guard let latest = locations.first else { return }
+            let distanceInMeters = startLocation?.distance(from: latest)
+            print("distance in meters: \(String(describing: distanceInMeters!))")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            locationManager?.startUpdatingLocation()
+            locationManager?.allowsBackgroundLocationUpdates = true
+        }
+    }
+    
+}
