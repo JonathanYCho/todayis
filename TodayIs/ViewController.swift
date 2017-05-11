@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreLocation
-
+import MapKit
 
 class ViewController: UIViewController {
     var locationManager: CLLocationManager?
@@ -21,12 +21,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let centerLocation = CLLocationCoordinate2DMake(-27, 153)
-        let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
-        self.map.setRegion(mapRegion, animated: true)
-        self.map.userTrackingMode = .follow
-            
+//        let centerLocation = CLLocationCoordinate2DMake(-27, 153)
+//        let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
+//        let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
+//        self.map.setRegion(mapRegion, animated: true)
+//        map.userTrackingMode = .follow
         // Do any additional setup after loading the view, typically from a nib.
         locationManager = CLLocationManager()
         locationManager?.delegate = self
