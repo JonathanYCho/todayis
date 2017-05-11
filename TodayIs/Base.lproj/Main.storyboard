@@ -52,9 +52,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCf-5d-8nl">
                                                         <rect key="frame" x="250" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Next"/>
-                                                        <connections>
-                                                            <action selector="DateNextPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nzm-ob-tG3"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>

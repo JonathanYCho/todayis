@@ -96,8 +96,13 @@
 				TargetAttributes = {
 					71FF526A1EC4DB09008971FD = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 84G6XMKATR;
+						DevelopmentTeam = TLQ3N3Y5JA;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -263,7 +268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84G6XMKATR;
+				DEVELOPMENT_TEAM = TLQ3N3Y5JA;
 				INFOPLIST_FILE = TodayIs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TodayIs.TodayIs;
@@ -276,7 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 84G6XMKATR;
+				DEVELOPMENT_TEAM = TLQ3N3Y5JA;
 				INFOPLIST_FILE = TodayIs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TodayIs.TodayIs;
