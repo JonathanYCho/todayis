@@ -27,10 +27,10 @@ class ViewController: UIViewController {
 //        self.map.setRegion(mapRegion, animated: true)
 //        map.userTrackingMode = .follow
         // Do any additional setup after loading the view, typically from a nib.
+     
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        
         locationManager?.requestWhenInUseAuthorization()
     }
     
