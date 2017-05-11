@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 //        var myLocation = locationManager?.requestLocation()
         
-        
+        displayDate()
         let centerLocation = CLLocationCoordinate2DMake(-27 , 153)
         let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
