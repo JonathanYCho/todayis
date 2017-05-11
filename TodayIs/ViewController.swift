@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var celebrationLabel: UILabel!
+    
+    @IBOutlet weak var map: MKMapView!
+
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let centerLocation = CLLocationCoordinate2DMake(-27, 153)
+        let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
+        let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
+        self.map.setRegion(mapRegion, animated: true)
+        map.userTrackingMode = .follow
         // Do any additional setup after loading the view, typically from a nib.
     }
 
