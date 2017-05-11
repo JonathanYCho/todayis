@@ -43,7 +43,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Prev"/>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 11, 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rz2-aG-qwe">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rz2-aG-qwe">
                                                         <rect key="frame" x="125" y="0.0" width="125" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -52,6 +52,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCf-5d-8nl">
                                                         <rect key="frame" x="250" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Next"/>
+                                                        <connections>
+                                                            <action selector="DateNextPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nzm-ob-tG3"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -66,7 +69,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Prev"/>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twilight Zone Day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHt-Z9-q8J">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Celebration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHt-Z9-q8J">
                                                         <rect key="frame" x="125" y="0.0" width="125" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -85,25 +88,35 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-cE-co5">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="482"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="522"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX2-gC-xIJ">
-                                                <rect key="frame" x="163" y="67" width="48" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX2-gC-xIJ">
+                                                <rect key="frame" x="163" y="7" width="48" height="30"/>
                                                 <state key="normal" title="Map It!"/>
                                             </button>
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3mU-Yk-FX1">
+                                                <rect key="frame" x="8" y="37" width="359" height="485"/>
+                                            </mapView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="3mU-Yk-FX1" firstAttribute="top" secondItem="iX2-gC-xIJ" secondAttribute="bottom" id="D4G-SA-vAT"/>
+                                            <constraint firstAttribute="bottom" secondItem="3mU-Yk-FX1" secondAttribute="bottom" id="Ymg-qT-fZY"/>
+                                            <constraint firstItem="iX2-gC-xIJ" firstAttribute="centerX" secondItem="JoQ-cE-co5" secondAttribute="centerX" id="f29-bi-kMq"/>
+                                            <constraint firstAttribute="trailing" secondItem="3mU-Yk-FX1" secondAttribute="trailing" constant="8" id="nR1-Ez-bu1"/>
+                                            <constraint firstItem="3mU-Yk-FX1" firstAttribute="leading" secondItem="JoQ-cE-co5" secondAttribute="leading" constant="8" id="zwa-dI-pAd"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoU-aJ-fT6">
-                                        <rect key="frame" x="0.0" y="582" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="622" width="375" height="20"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="y4F-gp-4ZG"/>
+                                            <constraint firstAttribute="height" constant="20" id="y4F-gp-4ZG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="iX2-gC-xIJ" firstAttribute="top" secondItem="EHt-Z9-q8J" secondAttribute="bottom" constant="7" id="UeH-Hp-Tjj"/>
                                     <constraint firstAttribute="bottom" secondItem="YoU-aJ-fT6" secondAttribute="bottom" id="qvl-wU-9AX"/>
                                 </constraints>
                             </stackView>
@@ -116,9 +129,15 @@
                             <constraint firstAttribute="trailing" secondItem="4GL-aJ-uGG" secondAttribute="trailing" id="zXi-hY-q2g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="celebrationLabel" destination="EHt-Z9-q8J" id="whq-ej-AMB"/>
+                        <outlet property="dateLabel" destination="Rz2-aG-qwe" id="TMN-Xf-M4L"/>
+                        <outlet property="map" destination="3mU-Yk-FX1" id="tfG-Ag-jKU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="137.18140929535232"/>
         </scene>
     </scenes>
 </document>
