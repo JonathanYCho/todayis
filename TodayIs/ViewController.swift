@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
         self.map.setRegion(mapRegion, animated: true)
-        map.userTrackingMode = .follow
+        self.map.userTrackingMode = .follow
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
