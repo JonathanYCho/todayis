@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D6E734A1EC642F2005C2E6A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6E73491EC642F2005C2E6A /* LocationSearchTable.swift */; };
 		71B5C9BA1EC637BF004B4C26 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5C9B91EC637BF004B4C26 /* DetailsViewController.swift */; };
 		71FF526F1EC4DB09008971FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF526E1EC4DB09008971FD /* AppDelegate.swift */; };
 		71FF52711EC4DB09008971FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF52701EC4DB09008971FD /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D6E73491EC642F2005C2E6A /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		71B5C9B91EC637BF004B4C26 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		71FF526B1EC4DB09008971FD /* TodayIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayIs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FF526E1EC4DB09008971FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 		71FF526D1EC4DB09008971FD /* TodayIs */ = {
 			isa = PBXGroup;
 			children = (
+				5D6E73491EC642F2005C2E6A /* LocationSearchTable.swift */,
 				71FF526E1EC4DB09008971FD /* AppDelegate.swift */,
 				71FF52701EC4DB09008971FD /* ViewController.swift */,
 				71FF52721EC4DB09008971FD /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				71FF52711EC4DB09008971FD /* ViewController.swift in Sources */,
 				71FF526F1EC4DB09008971FD /* AppDelegate.swift in Sources */,
 				71B5C9BA1EC637BF004B4C26 /* DetailsViewController.swift in Sources */,
+				5D6E734A1EC642F2005C2E6A /* LocationSearchTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

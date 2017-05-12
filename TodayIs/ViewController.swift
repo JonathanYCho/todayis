@@ -55,13 +55,13 @@ class ViewController: UIViewController {
         "May 31":["National Autonomous Vehicle Day","National Macaroon Day","National Save Your Hearing Day","National Speak in Sentences Day","National Senior Health and Fitness Day"]]
     var celebrationMarker = 0
     var today = Date()
-    
-    var locationManager: CLLocationManager?
-    var startLocation: CLLocation?
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var celebrationLabel: UILabel!
-    @IBOutlet weak var map: MKMapView!
-    
+    @IBOutlet weak var mapView: MKMapView!
+    var resultSearchController:UISearchController? = nil
+    let locationManager = CLLocationManager()
+    var selectedPin:MKPlacemark? = nil  //caches any incoming placemarks
+
     func displayCelebration(){
         celebrationLabel.text = Days[today.toString()]?[celebrationMarker]
     }
@@ -100,61 +100,120 @@ class ViewController: UIViewController {
         displayCelebration()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         displayDate()
-        let centerLocation = CLLocationCoordinate2DMake(-27, 153)
-        let mapSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
-        self.map.setRegion(mapRegion, animated: true)
-        self.map.userTrackingMode = .follow
-  
-        // Do any additional setup after loading the view, typically from a nib.
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
         
+        //      set-up the search results table:
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
         
-        //TODO REAL LOCATION
-        let mainLoc = CLLocationCoordinate2DMake(37.331648, -122.032624)
-        let dropPin = MKPointAnnotation()
-        dropPin.coordinate = mainLoc
+        //      passes along a handle of the mapView from the main View Controller onto the locationSearchTable
+        locationSearchTable.mapView = mapView
         
-        //TODO: TITLE
-        dropPin.title = "Bagels"
-        map.addAnnotation(dropPin)
+        //      set up the search bar, configures it and embeds it within the navigation bar
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "find Nutty Fudge near you"
+        navigationItem.titleView = resultSearchController?.searchBar
         
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager?.requestWhenInUseAuthorization()
+        //      configure the UISearchController's appearance
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        //      The parent (ViewController) passes a handle of itself to the child controller (LocationSearchTable)
+        locationSearchTable.handleMapSearchDelegate = self
+        
     }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // an API call that launches the Apple Maps app with driving directions. You convert the cached selectedPin to a MKMapItem. The Map Item is then able to open up driving directions in Apple Maps using the openInMapsWithLaunchOptions() method
+    func getDirections(){
+        if let selectedPin = selectedPin {
+            let mapItem = MKMapItem(placemark: selectedPin)
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            mapItem.openInMaps(launchOptions: launchOptions)
+        }
+    }
+
 }
 
-
-extension ViewController: CLLocationManagerDelegate {
+extension ViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if startLocation == nil {
-            startLocation = locations.first
-        } else {
-            guard let latest = locations.first else { return }
-            let distanceInMeters = startLocation?.distance(from: latest)
-            //print("distance in meters: \(String(describing: distanceInMeters!))")
+        if let location = locations.first {
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegionMake(location.coordinate, span)
+            mapView.setRegion(region, animated: true)
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            locationManager?.startUpdatingLocation()
-            locationManager?.allowsBackgroundLocationUpdates = true
-        }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: NSError) {
+        print("error:: \(error)")
     }
-    
 }
+
+//  implements the dropPinZoomIn() method in order to adopt the HandleMapSearch protocol.
+extension ViewController: HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        // populate the map pin with information
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        mapView.addAnnotation(annotation)  //adds annotation to the map
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)  //zooms the map to the coordinate
+        print ("This is the target location: \(mapView.centerCoordinate.latitude)")
+    }
+}
+
+
+
+// customize the map pin callout with a button that takes you to Apple Maps for driving directions
+extension ViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            // return nil so you don't interfere with the user's blue location dot
+            return nil
+        }
+        let reuseId = "pin" // reuse identifier for the pin
+        // setting the map pin UI, along with the color and callout
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView?.pinTintColor = UIColor.orange
+        pinView?.canShowCallout = true
+        let smallSquare = CGSize(width: 30, height: 30)
+        let button = UIButton(frame: CGRect(origin: CGPoint(x: 0,y :0), size: smallSquare))
+        button.setBackgroundImage(#imageLiteral(resourceName: "car"), for: .normal)
+        button.addTarget(self, action: #selector(ViewController.getDirections), for: .touchUpInside)
+        // set to an UIButton that you instantiate programmatically. The button is set to a size of 30×30. The button image is set to an asset catalog image named car, and the button’s action is wired to a custom method called getDirections()
+        pinView?.leftCalloutAccessoryView = button
+        return pinView
+    }
+}
+
+
+
