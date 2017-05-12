@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         let mapRegion = MKCoordinateRegionMake(centerLocation, mapSpan)
         self.map.setRegion(mapRegion, animated: true)
         self.map.userTrackingMode = .follow
+  
         // Do any additional setup after loading the view, typically from a nib.
         
         
@@ -87,7 +88,7 @@ extension ViewController: CLLocationManagerDelegate {
         } else {
             guard let latest = locations.first else { return }
             let distanceInMeters = startLocation?.distance(from: latest)
-            print("distance in meters: \(String(describing: distanceInMeters!))")
+            //print("distance in meters: \(String(describing: distanceInMeters!))")
         }
     }
     
