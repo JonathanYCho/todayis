@@ -71,6 +71,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV1-6W-D9g">
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Prev"/>
+                                                        <connections>
+                                                            <action selector="celebrationPrev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rgo-Sb-UUb"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Celebration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EHt-Z9-q8J">
                                                         <rect key="frame" x="125" y="0.0" width="125" height="30"/>
@@ -81,6 +84,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G90-GX-hX2">
                                                         <rect key="frame" x="250" y="0.0" width="125" height="30"/>
                                                         <state key="normal" title="Next"/>
+                                                        <connections>
+                                                            <action selector="celebrationNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eHx-jN-sAw"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
