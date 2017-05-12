@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		71B5C9BA1EC637BF004B4C26 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B5C9B91EC637BF004B4C26 /* DetailsViewController.swift */; };
 		71FF526F1EC4DB09008971FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF526E1EC4DB09008971FD /* AppDelegate.swift */; };
 		71FF52711EC4DB09008971FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FF52701EC4DB09008971FD /* ViewController.swift */; };
 		71FF52741EC4DB09008971FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71FF52721EC4DB09008971FD /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71B5C9B91EC637BF004B4C26 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		71FF526B1EC4DB09008971FD /* TodayIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodayIs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FF526E1EC4DB09008971FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71FF52701EC4DB09008971FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				71FF526E1EC4DB09008971FD /* AppDelegate.swift */,
 				71FF52701EC4DB09008971FD /* ViewController.swift */,
 				71FF52721EC4DB09008971FD /* Main.storyboard */,
+				71B5C9B91EC637BF004B4C26 /* DetailsViewController.swift */,
 				71FF52751EC4DB09008971FD /* Assets.xcassets */,
 				71FF52771EC4DB09008971FD /* LaunchScreen.storyboard */,
 				71FF527A1EC4DB09008971FD /* Info.plist */,
@@ -144,6 +147,7 @@
 			files = (
 				71FF52711EC4DB09008971FD /* ViewController.swift in Sources */,
 				71FF526F1EC4DB09008971FD /* AppDelegate.swift in Sources */,
+				71B5C9BA1EC637BF004B4C26 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

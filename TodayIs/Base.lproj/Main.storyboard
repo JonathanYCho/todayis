@@ -118,6 +118,9 @@
                                                 <rect key="frame" x="337" y="-5" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Info"/>
+                                                <connections>
+                                                    <segue destination="PIw-Ke-gge" kind="show" id="fCx-rz-kbI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,10 +153,10 @@
             </objects>
             <point key="canvasLocation" x="145" y="136"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="PeH-WB-4WK">
             <objects>
-                <viewController id="PIw-Ke-gge" sceneMemberID="viewController">
+                <viewController id="PIw-Ke-gge" customClass="DetailsViewController" customModule="TodayIs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7qw-fp-TPm"/>
                         <viewControllerLayoutGuide type="bottom" id="TRd-E1-mpD"/>
@@ -162,9 +165,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lty-Gl-VMZ">
-                                <rect key="frame" x="166" y="116" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Each year on May 12th, National Nutty Fudge Day tempts you to indulge in smooth chocolate fudge filled with crunchy nuts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lty-Gl-VMZ">
+                                <rect key="frame" x="16" y="606" width="343" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -175,18 +177,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="slack-imgs" translatesAutoresizingMaskIntoConstraints="NO" id="twj-wB-f6q">
+                                <rect key="frame" x="16" y="41" width="343" height="565"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gd4-lV-MMN" secondAttribute="trailing" id="2yc-CR-4yx"/>
+                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="H5o-8a-bfd"/>
                             <constraint firstItem="gd4-lV-MMN" firstAttribute="top" secondItem="7qw-fp-TPm" secondAttribute="bottom" id="L7d-83-fmX"/>
+                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="trailing" secondItem="wdV-5y-nku" secondAttribute="trailingMargin" id="Lhs-lU-Soz"/>
+                            <constraint firstItem="twj-wB-f6q" firstAttribute="top" secondItem="gd4-lV-MMN" secondAttribute="bottom" id="XJi-8I-bUT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lty-Gl-VMZ" secondAttribute="trailing" id="Y6P-UB-T7G"/>
                             <constraint firstItem="gd4-lV-MMN" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="eTc-6m-UnW"/>
+                            <constraint firstItem="TRd-E1-mpD" firstAttribute="top" secondItem="lty-Gl-VMZ" secondAttribute="bottom" id="f7J-ax-PJV"/>
+                            <constraint firstItem="TRd-E1-mpD" firstAttribute="top" secondItem="lty-Gl-VMZ" secondAttribute="bottom" id="gIF-0d-fnZ"/>
+                            <constraint firstItem="twj-wB-f6q" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="n1r-bn-cTC"/>
+                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="top" secondItem="twj-wB-f6q" secondAttribute="bottom" id="sJv-cG-MhZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="twj-wB-f6q" secondAttribute="trailing" id="yFc-AA-YXf"/>
+                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="zBM-KX-hBv"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5R-CL-JVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="132"/>
+            <point key="canvasLocation" x="885.60000000000002" y="131.78410794602701"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="mcy-ND-dwV">
@@ -206,4 +221,7 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="slack-imgs" width="640" height="960"/>
+    </resources>
 </document>
