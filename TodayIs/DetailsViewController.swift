@@ -12,8 +12,8 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.borderWidth = 7.5 
-        self.view.layer.borderColor = UIColor.yellow.cgColor
+        self.view.layer.borderWidth = 3.0
+        self.view.layer.borderColor = UIColor.cyan.cgColor
         
         print (self.view)
         
