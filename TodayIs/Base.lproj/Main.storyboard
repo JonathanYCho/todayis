@@ -221,9 +221,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" misplaced="YES" image="slack-imgs" translatesAutoresizingMaskIntoConstraints="NO" id="twj-wB-f6q">
-                                <rect key="frame" x="16" y="41" width="343" height="553"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xld-5i-P2m">
                                 <rect key="frame" x="24" y="16" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -232,15 +229,48 @@
                                     <segue destination="7U8-La-OrI" kind="show" id="0E2-fn-FF8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Each year on May 12th, National Nutty Fudge Day tempts you to indulge in smooth chocolate fudge filled with crunchy nuts." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lty-Gl-VMZ">
-                                <rect key="frame" x="16" y="602" width="343" height="50.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="56C-75-y56"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50.5" id="gmE-gu-gDz"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50.5" id="raw-H5-En1"/>
-                                    <constraint firstAttribute="height" constant="50.5" id="wpL-1P-hOS"/>
-                                </constraints>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Lx-tc-Ecl">
+                                <rect key="frame" x="24" y="138" width="335" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BbZ-iF-Dmh">
+                                <rect key="frame" x="20" y="313" width="335" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="R2j-mg-5Tm">
+                                <rect key="frame" x="20" y="500" width="335" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5e4-4p-oST">
+                                <rect key="frame" x="24" y="284" width="74" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaD-mE-K0e">
+                                <rect key="frame" x="24" y="471" width="113" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How to Celebrate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BK9-jc-5y1">
+                                <rect key="frame" x="24" y="109" width="159" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -248,25 +278,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gd4-lV-MMN" secondAttribute="trailing" id="2yc-CR-4yx"/>
-                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="H5o-8a-bfd"/>
                             <constraint firstItem="gd4-lV-MMN" firstAttribute="top" secondItem="7qw-fp-TPm" secondAttribute="bottom" id="L7d-83-fmX"/>
-                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="trailing" secondItem="wdV-5y-nku" secondAttribute="trailingMargin" id="Lhs-lU-Soz"/>
-                            <constraint firstItem="twj-wB-f6q" firstAttribute="top" secondItem="gd4-lV-MMN" secondAttribute="bottom" id="XJi-8I-bUT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lty-Gl-VMZ" secondAttribute="trailing" id="Y6P-UB-T7G"/>
                             <constraint firstItem="gd4-lV-MMN" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="eTc-6m-UnW"/>
-                            <constraint firstItem="TRd-E1-mpD" firstAttribute="top" secondItem="lty-Gl-VMZ" secondAttribute="bottom" id="f7J-ax-PJV"/>
-                            <constraint firstItem="TRd-E1-mpD" firstAttribute="top" secondItem="lty-Gl-VMZ" secondAttribute="bottom" id="gIF-0d-fnZ"/>
-                            <constraint firstItem="twj-wB-f6q" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="n1r-bn-cTC"/>
-                            <constraint firstItem="TRd-E1-mpD" firstAttribute="top" secondItem="lty-Gl-VMZ" secondAttribute="bottom" id="pQb-sp-hUC"/>
-                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="top" secondItem="twj-wB-f6q" secondAttribute="bottom" id="sJv-cG-MhZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="twj-wB-f6q" secondAttribute="trailing" id="yFc-AA-YXf"/>
-                            <constraint firstItem="lty-Gl-VMZ" firstAttribute="leading" secondItem="wdV-5y-nku" secondAttribute="leadingMargin" id="zBM-KX-hBv"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5R-CL-JVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.8" y="131.78410794602701"/>
+            <point key="canvasLocation" x="2541.5999999999999" y="186.65667166416793"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Bi-0F-kJX">
@@ -287,7 +306,4 @@
             <point key="canvasLocation" x="77.599999999999994" y="131.78410794602701"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="slack-imgs" width="640" height="960"/>
-    </resources>
 </document>
