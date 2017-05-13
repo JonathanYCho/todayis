@@ -144,19 +144,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-cE-co5">
                                         <rect key="frame" x="0.0" y="100" width="375" height="478"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX2-gC-xIJ">
-                                                <rect key="frame" x="163" y="7" width="48" height="30"/>
-                                                <state key="normal" title="Map It!"/>
-                                            </button>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3mU-Yk-FX1">
-                                                <rect key="frame" x="8" y="37" width="359" height="441"/>
+                                                <rect key="frame" x="8" y="5" width="359" height="468"/>
                                             </mapView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="3mU-Yk-FX1" firstAttribute="top" secondItem="iX2-gC-xIJ" secondAttribute="bottom" id="D4G-SA-vAT"/>
-                                            <constraint firstAttribute="bottom" secondItem="3mU-Yk-FX1" secondAttribute="bottom" id="Ymg-qT-fZY"/>
-                                            <constraint firstItem="iX2-gC-xIJ" firstAttribute="centerX" secondItem="JoQ-cE-co5" secondAttribute="centerX" id="f29-bi-kMq"/>
+                                            <constraint firstItem="3mU-Yk-FX1" firstAttribute="top" secondItem="JoQ-cE-co5" secondAttribute="top" constant="5" id="Lr6-7p-V9G"/>
+                                            <constraint firstAttribute="bottom" secondItem="3mU-Yk-FX1" secondAttribute="bottom" constant="5" id="inR-iG-jiV"/>
                                             <constraint firstAttribute="trailing" secondItem="3mU-Yk-FX1" secondAttribute="trailing" constant="8" id="nR1-Ez-bu1"/>
                                             <constraint firstItem="3mU-Yk-FX1" firstAttribute="leading" secondItem="JoQ-cE-co5" secondAttribute="leading" constant="8" id="zwa-dI-pAd"/>
                                         </constraints>
@@ -185,7 +180,6 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iX2-gC-xIJ" firstAttribute="top" secondItem="EHt-Z9-q8J" secondAttribute="bottom" constant="7" id="UeH-Hp-Tjj"/>
                                     <constraint firstAttribute="bottom" secondItem="YoU-aJ-fT6" secondAttribute="bottom" id="qvl-wU-9AX"/>
                                 </constraints>
                             </stackView>
