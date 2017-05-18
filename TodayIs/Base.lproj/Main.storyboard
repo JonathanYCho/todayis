@@ -54,7 +54,7 @@
             </objects>
             <point key="canvasLocation" x="-670" y="132"/>
         </scene>
-        <!--View Controller-->
+        <!--Today is:-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TodayIs" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,17 +69,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4GL-aJ-uGG">
                                 <rect key="frame" x="0.0" y="69" width="375" height="598"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today Is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McW-gS-rpw">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="k5S-Kd-fqI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7in-2R-WNW">
-                                        <rect key="frame" x="0.0" y="40" width="375" height="60"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7in-2R-WNW" userLabel="Holidays View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qoS-Ny-lg5">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -139,13 +130,28 @@
                                                     <constraint firstItem="wV1-6W-D9g" firstAttribute="leading" secondItem="eVH-Oy-rBn" secondAttribute="leading" id="sIE-n4-fJX"/>
                                                 </constraints>
                                             </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmP-jH-8a8" customClass="searchBarHolder">
+                                                <rect key="frame" x="0.0" y="60" width="375" height="30"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6i-va-Bp1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="U6i-va-Bp1" firstAttribute="top" secondItem="HmP-jH-8a8" secondAttribute="top" id="Hsz-p0-Ttl"/>
+                                                    <constraint firstItem="U6i-va-Bp1" firstAttribute="leading" secondItem="HmP-jH-8a8" secondAttribute="leading" id="LxI-uw-Ldh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="U6i-va-Bp1" secondAttribute="trailing" id="hee-No-JdQ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="U6i-va-Bp1" secondAttribute="bottom" id="iPW-FF-lZO"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-cE-co5">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="478"/>
+                                        <rect key="frame" x="0.0" y="90" width="375" height="488"/>
                                         <subviews>
                                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3mU-Yk-FX1">
-                                                <rect key="frame" x="8" y="5" width="359" height="468"/>
+                                                <rect key="frame" x="8" y="5" width="359" height="478"/>
                                             </mapView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,7 +190,6 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.43721684813499451" green="0.91056108474731445" blue="0.63631922006607056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4GL-aJ-uGG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="cZi-zL-lB2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4GL-aJ-uGG" secondAttribute="bottom" id="edT-Ny-EP5"/>
@@ -192,11 +197,12 @@
                             <constraint firstAttribute="trailing" secondItem="4GL-aJ-uGG" secondAttribute="trailing" id="zXi-hY-q2g"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0a4-LY-bmS"/>
+                    <navigationItem key="navigationItem" title="Today is:" id="0a4-LY-bmS"/>
                     <connections>
                         <outlet property="celebrationLabel" destination="EHt-Z9-q8J" id="whq-ej-AMB"/>
                         <outlet property="dateLabel" destination="Rz2-aG-qwe" id="TMN-Xf-M4L"/>
                         <outlet property="mapView" destination="3mU-Yk-FX1" id="0DH-E2-6nb"/>
+                        <outlet property="searchBarHolder" destination="U6i-va-Bp1" id="jN2-qW-1w4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

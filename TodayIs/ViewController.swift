@@ -74,6 +74,8 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
     var selectedPin:MKPlacemark? = nil  //caches any incoming placemarks
     var currentCelebration: String = ""
+    
+    @IBOutlet weak var searchBarHolder: UIView!
 
     func displayCelebration(){
         currentCelebration = (Days[today.toString()]?[celebrationMarker])!
@@ -94,7 +96,8 @@ class ViewController: UIViewController {
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "find \(currentCelebration) near you"
-        navigationItem.titleView = resultSearchController?.searchBar
+        searchBarHolder.addSubview(searchBar)
+//      navigationItem.titleView = resultSearchController?.searchBar
     }
     
     @IBAction func dateNext(_ sender: UIButton) {
