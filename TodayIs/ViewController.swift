@@ -19,6 +19,18 @@ extension Date {
     }
 }
 
+extension String {
+    func toLengthOf(length:Int) -> String {
+        if length <= 0 {
+            return self
+        } else if let to = self.index(self.startIndex, offsetBy: length, limitedBy: self.endIndex) {
+            return self.substring(from: to)
+            
+        } else {
+            return ""
+        }
+    }
+}
 
 class ViewController: UIViewController {
     var Days: [String: Array<String>] = [
@@ -61,15 +73,33 @@ class ViewController: UIViewController {
     var resultSearchController:UISearchController? = nil
     let locationManager = CLLocationManager()
     var selectedPin:MKPlacemark? = nil  //caches any incoming placemarks
+    var currentCelebration: String = ""
+    
+    @IBOutlet weak var searchBarHolder: UIView!
 
     func displayCelebration(){
-        celebrationLabel.text = Days[today.toString()]?[celebrationMarker]
+        currentCelebration = (Days[today.toString()]?[celebrationMarker])!
+        celebrationLabel.text = currentCelebration
+        // this next bit chops off the "National" and "Day" characters to populate the search bar
+        currentCelebration = currentCelebration.toLengthOf(length: 9)
+        let endIndex = currentCelebration.index(currentCelebration.endIndex, offsetBy: -4)
+        currentCelebration = currentCelebration.substring(to: endIndex)
     }
     
     func displayDate(){
         dateLabel.text = today.toString()
         displayCelebration()
     }
+    
+    func initiateSearchBar(){
+        //      set up the search bar, configures it and embeds it within the navigation bar
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "find \(currentCelebration) near you"
+        searchBarHolder.addSubview(searchBar)
+//      navigationItem.titleView = resultSearchController?.searchBar
+    }
+    
     @IBAction func dateNext(_ sender: UIButton) {
         let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)
         today = tomorrow!
@@ -117,11 +147,7 @@ class ViewController: UIViewController {
         //      passes along a handle of the mapView from the main View Controller onto the locationSearchTable
         locationSearchTable.mapView = mapView
         
-        //      set up the search bar, configures it and embeds it within the navigation bar
-        let searchBar = resultSearchController!.searchBar
-        searchBar.sizeToFit()
-        searchBar.placeholder = "find Nutty Fudge near you"
-        navigationItem.titleView = resultSearchController?.searchBar
+        initiateSearchBar()
         
         //      configure the UISearchController's appearance
         resultSearchController?.hidesNavigationBarDuringPresentation = false
@@ -215,6 +241,10 @@ extension ViewController : MKMapViewDelegate {
         return pinView
     }
 }
+
+//extension ViewController : UISearchBarDelegate {
+//    
+//}
 
 
 
