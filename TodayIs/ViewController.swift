@@ -75,6 +75,8 @@ class ViewController: UIViewController {
     var selectedPin:MKPlacemark? = nil  //caches any incoming placemarks
     var currentCelebration: String = ""
     
+    var polyline = MKPolyline()
+    
     @IBOutlet weak var searchBarHolder: UIView!
 
     func displayCelebration(){
@@ -95,7 +97,7 @@ class ViewController: UIViewController {
         //      set up the search bar, configures it and embeds it within the navigation bar
         let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = "find \(currentCelebration) near you"
+        searchBar.placeholder = "Find \(currentCelebration) near you"
         searchBarHolder.addSubview(searchBar)
 //      navigationItem.titleView = resultSearchController?.searchBar
     }
@@ -105,6 +107,8 @@ class ViewController: UIViewController {
         today = tomorrow!
         celebrationMarker = 0
         displayDate()
+        resultSearchController!.searchBar.placeholder = "Find \(currentCelebration) near you"
+        
     }
     
     @IBAction func datePrev(_ sender: UIButton) {
@@ -112,6 +116,7 @@ class ViewController: UIViewController {
         today = yesterday!
         celebrationMarker = 0
         displayDate()
+        resultSearchController!.searchBar.placeholder = "Find \(currentCelebration) near you"
     }
     
     @IBAction func celebrationNext(_ sender: UIButton) {
@@ -120,6 +125,7 @@ class ViewController: UIViewController {
             celebrationMarker = 0
         }
         displayCelebration()
+        resultSearchController!.searchBar.placeholder = "Find \(currentCelebration) near you"
     }
     
     @IBAction func celebrationPrev(_ sender: UIButton) {
@@ -128,6 +134,7 @@ class ViewController: UIViewController {
             celebrationMarker = (Days[today.toString()]!.count-1)
         }
         displayCelebration()
+        resultSearchController!.searchBar.placeholder = "Find \(currentCelebration) near you"
     }
     
     override func viewDidLoad() {
@@ -161,6 +168,33 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func drawRoute(_ UserLoc: CLLocation, destPin: CLLocation){
+        self.mapView.remove(polyline)
+        let c1 = CLLocationCoordinate2D(latitude: UserLoc.coordinate.latitude, longitude: UserLoc.coordinate.longitude)
+        let c2 = CLLocationCoordinate2D(latitude: destPin.coordinate.latitude, longitude: destPin.coordinate.longitude)
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: c1))
+        request.destination = MKMapItem( placemark: MKPlacemark(coordinate: c2))
+        request.requestsAlternateRoutes = false
+        let directions = MKDirections(request: request)
+        directions.calculate(completionHandler: {(response, error) in
+            if error != nil {
+                print("Error getting directions")
+            } else {
+                for route in (response?.routes)! {
+                    self.mapView.add(route.polyline,
+                                   level: MKOverlayLevel.aboveRoads)
+                    //                    //Does get step by step Instructions, dont know where to put these
+                                        for step in route.steps {
+                                            print(step.instructions)
+                                        }
+                }
+                
+            }
+        })
+        
     }
 
     // an API call that launches the Apple Maps app with driving directions. You convert the cached selectedPin to a MKMapItem. The Map Item is then able to open up driving directions in Apple Maps using the openInMapsWithLaunchOptions() method
@@ -214,6 +248,7 @@ extension ViewController: HandleMapSearch {
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)  //zooms the map to the coordinate
         print ("This is the target location: \(mapView.centerCoordinate.latitude)")
+        drawRoute(CLLocation(latitude: mapView.userLocation.coordinate.latitude, longitude: mapView.userLocation.coordinate.longitude),destPin: CLLocation(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude))
     }
 }
 
@@ -240,11 +275,25 @@ extension ViewController : MKMapViewDelegate {
         pinView?.leftCalloutAccessoryView = button
         return pinView
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer! {
+        if overlay is MKPolyline{
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.orange
+            polylineRenderer.lineDashPattern = [5,5]
+            polylineRenderer.lineWidth = 3
+            return polylineRenderer
+            
+        }
+        return nil
+    }
+
 }
 
 //extension ViewController : UISearchBarDelegate {
 //    
 //}
+
 
 
 
