@@ -74,7 +74,7 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
     var selectedPin:MKPlacemark? = nil  //caches any incoming placemarks
     var currentCelebration: String = ""
-    
+    //PolyLine for route when created
     var polyline = MKPolyline()
     
     @IBOutlet weak var searchBarHolder: UIView!
@@ -171,18 +171,24 @@ class ViewController: UIViewController {
     }
     
     func drawRoute(_ UserLoc: CLLocation, destPin: CLLocation){
-        self.mapView.remove(polyline)
+        //deletes any current polyline
+        let overlays = mapView.overlays
+        self.mapView.removeOverlays(overlays)
+        //Set up 2 coordinates
         let c1 = CLLocationCoordinate2D(latitude: UserLoc.coordinate.latitude, longitude: UserLoc.coordinate.longitude)
         let c2 = CLLocationCoordinate2D(latitude: destPin.coordinate.latitude, longitude: destPin.coordinate.longitude)
+        //Create a direction request
         let request = MKDirectionsRequest()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: c1))
         request.destination = MKMapItem( placemark: MKPlacemark(coordinate: c2))
         request.requestsAlternateRoutes = false
+        //submit direction request and save to variable
         let directions = MKDirections(request: request)
         directions.calculate(completionHandler: {(response, error) in
             if error != nil {
                 print("Error getting directions")
             } else {
+                //draw a polyline
                 for route in (response?.routes)! {
                     self.mapView.add(route.polyline,
                                    level: MKOverlayLevel.aboveRoads)
